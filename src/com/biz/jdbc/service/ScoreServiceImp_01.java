@@ -5,12 +5,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import com.biz.jdbc.config.DBConnection;
 import com.biz.jdbc.model.ScoreVO;
 
 public class ScoreServiceImp_01 implements ScoreService {
-	
+	Scanner scan = new Scanner(System.in);
 	List<ScoreVO> scList = null;
 	@Override
 	public List<ScoreVO> selectAll() {
@@ -98,6 +99,30 @@ public class ScoreServiceImp_01 implements ScoreService {
 	public int delete(Long seq) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	public void makeScore(ScoreVO vo2, String strNum) {
+		System.out.println("성적을 입력하세요");
+		System.out.println("---------------------");
+		
+		System.out.print("날짜 >>");
+		String strDate = scan.nextLine();
+		vo2.setSc_date(strDate);
+		
+		System.out.print("학번 >>");
+		strNum = scan.nextLine();
+		vo2.setSc_st_no(strNum);
+		
+		System.out.print("과목 >>");
+		String strSub = scan.nextLine();
+		vo2.setSc_subject(strSub);
+		
+		System.out.print("성적 >>");
+		String strScore = scan.nextLine();
+		int intScore = Integer.valueOf(strScore);
+		vo2.setSc_score(intScore);
+		
+		
 	}
 
 }

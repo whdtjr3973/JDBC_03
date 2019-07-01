@@ -2,6 +2,7 @@ package com.biz.jdbc.exec;
 
 import java.util.Scanner;
 
+import com.biz.jdbc.model.ScoreVO;
 import com.biz.jdbc.model.StudentVO;
 import com.biz.jdbc.service.ScoreService;
 import com.biz.jdbc.service.ScoreServiceImp_01;
@@ -24,6 +25,7 @@ public class ScoreExec_02 {
 			if(strNo.contentEquals("-E")) break;
 			
 			StudentVO vo = sts.findByNum(strNo);
+			ScoreVO vo2 = new ScoreVO();
 			
 			if(vo == null) {
 				vo = new StudentVO();
@@ -48,7 +50,15 @@ public class ScoreExec_02 {
 				
 				if(sts.insert(vo) > 0) {
 					System.out.println("학생정보를 새로 추가했습니다.");
-				
+					System.out.println();
+					
+					
+					ss.makeScore(vo2, strNo);
+					ss.insert(vo2);
+					
+					System.out.println("성적처리가 완료되었습니다.");
+					System.out.println("============================");
+								
 					
 				}
 				else System.out.println("학생정보를 추가하지 못했습니다.");

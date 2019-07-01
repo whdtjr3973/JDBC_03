@@ -14,5 +14,6 @@ public interface ScoreService {
 	public int insert(ScoreVO vo);
 	public int update(ScoreVO vo);
 	public int delete(Long seq);
+	public void makeScore(ScoreVO vo, String strNum);
 
 }
